@@ -1,5 +1,8 @@
 import React from "react";
-import { Chart } from "react-chartjs-2";
+import { Chart, registerables } from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+Chart.register(...registerables);
 
 function PerformanceChart() {
   const data = {
@@ -43,7 +46,7 @@ function PerformanceChart() {
   return (
     <div className="container mt-4">
       <h2 className="text-center">Editing Performance</h2>
-      <Chart type="bar" data={data} options={options} />
+      <Bar data={data} options={options} />
     </div>
   );
 }
