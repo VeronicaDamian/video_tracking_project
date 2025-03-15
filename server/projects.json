@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "Barbarian Nerf",
+    "client": {
+      "id": 1,
+      "name": "evan"
+    },
+    "duration": "56",
+    "paymentStatus": "unpaid",
+    "status": "Not Started",
+    "tags": [
+      "funny",
+      "amazing",
+      "long format",
+      "dnd"
+    ]
+  }
+]
