@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDropzone } from 'react-dropzone';
+import { getMetadata } from 'video-metadata-thumbnails';
+import { createProject } from '../../services/api/projectsApi';
 
-const NewProjectForm = ({ clients }) => {
+const NewProjectForm = ({ clients, onAddProject }) => {
   const [newProject, setNewProject] = useState({
     title: '',
     client: {
@@ -28,31 +31,42 @@ const NewProjectForm = ({ clients }) => {
   };
 
   const handleClientChange = (e) => {
-    const selectedClient = clients.find(client => client.id === parseInt(e.target.value));
-    setNewProject({ ...newProject, client: selectedClient });
+    const selectedClientId = e.target.value;
+    if (selectedClientId === 'new-client') {
+      navigate('/projects/new-client');
+    } else {
+      const selectedClient = clients.find(client => client.id === parseInt(selectedClientId));
+      setNewProject({ ...newProject, client: selectedClient });
+    }
   };
 
-  const handleAddProject = (e) => {
+  const handleAddProject = async (e) => {
     e.preventDefault();
     const projectToSave = {
       ...newProject,
       tags: newProject.tags.split(',').map(tag => tag.trim())
     };
-    fetch('http://localhost:5174/api/projects', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(projectToSave),
-    })
-      .then(response => response.json())
-      .then(() => {
-        navigate('/projects');
-      })
-      .catch(error => {
-        console.error('There was an error adding the project!', error);
-      });
+    try {
+      const newProject = await createProject(projectToSave);
+      onAddProject(newProject);
+      navigate('/projects');
+    } catch (error) {
+      console.error('There was an error adding the project!', error);
+    }
   };
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    getMetadata(file).then(metadata => {
+      setNewProject({
+        ...newProject,
+        title: file.name,
+        duration: Math.round(metadata.duration),
+      });
+    });
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: 'video/*' });
 
   return (
     <div className="container mt-4">
@@ -83,6 +97,7 @@ const NewProjectForm = ({ clients }) => {
                 {clients.map(client => (
                   <option key={client.id} value={client.id}>{client.name}</option>
                 ))}
+                <option value="new-client">Create New Client</option>
               </select>
             </div>
             <div className="mb-3">
@@ -130,6 +145,16 @@ const NewProjectForm = ({ clients }) => {
                 className="form-control"
                 placeholder="Tags (comma separated)"
               />
+            </div>
+            <div className="mb-3">
+              <div {...getRootProps({ className: 'dropzone border p-4 text-center' })}>
+                <input {...getInputProps()} />
+                {isDragActive ? (
+                  <p>Drop the video file here...</p>
+                ) : (
+                  <p>Select a video</p>
+                )}
+              </div>
             </div>
             <div className="mb-3">
               <button type="submit" className="btn btn-primary">Add Project</button>

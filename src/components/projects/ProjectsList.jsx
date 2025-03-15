@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProjectsList = ({ projects, onDelete }) => {
+  const handleDelete = (id) => {
+    const confirmed = window.confirm('Are you sure you want to delete this project?');
+    if (confirmed) {
+      onDelete(id);
+    }
+  };
+
   return (
     <table className="table table-striped">
       <thead>
@@ -19,7 +26,7 @@ const ProjectsList = ({ projects, onDelete }) => {
         {projects.map(project => (
           <tr key={project.id}>
             <td>{project.title}</td>
-            <td>{project.client.name}</td>
+            <td>{project.client?.name || 'No Client'}</td>
             <td>{project.status}</td>
             <td>{project.duration}</td>
             <td>{project.paymentStatus}</td>
@@ -30,7 +37,7 @@ const ProjectsList = ({ projects, onDelete }) => {
               </Link>
               <button
                 className="btn btn-danger btn-sm"
-                onClick={() => onDelete(project.id)}
+                onClick={() => handleDelete(project.id)}
               >
                 Delete
               </button>
