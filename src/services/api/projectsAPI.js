@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:5174/api/projects';
+const API = 'http://localhost:5174/api/projects'
 
 export const fetchProjects = async () => {
-  const response = await fetch(API_URL);
+  const response = await fetch(API);
   if (!response.ok) {
     throw new Error('Failed to fetch projects');
   }
@@ -9,7 +9,7 @@ export const fetchProjects = async () => {
 };
 
 export const createProject = async (project) => {
-  const response = await fetch(API_URL, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export const createProject = async (project) => {
 };
 
 export const deleteProject = async (id) => {
-  const response = await fetch(`${API_URL}/${id}`, {
+  const response = await fetch(`${API}/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) {

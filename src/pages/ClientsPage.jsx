@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import NewClientForm from '../components/clients/NewClientForm';
-import { fetchClients } from '../services/api/clientsApi';
+import { fetchClients } from '../services/api/clientsAPI';
+import ClientsList from '../components/clients/ClientsList';
 
 const ClientsPage = () => {
   const [clients, setClients] = useState([]);
@@ -26,26 +27,7 @@ const ClientsPage = () => {
         <Link to="/clients/new-client" className="btn btn-primary">Add New Client</Link>
       </div>
       <Routes>
-        <Route path="/" element={
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Client Name</th>
-                <th>Niche</th>
-                <th>Payment Rate</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map(client => (
-                <tr key={client.id}>
-                  <td>{client.name}</td>
-                  <td>{client.niche}</td>
-                  <td>{client.paymentRate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        } />
+        <Route path="/" element={<ClientsList clients={clients}/>} />
         <Route path="new-client" element={<NewClientForm />} />
       </Routes>
     </div>

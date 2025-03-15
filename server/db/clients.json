@@ -4,17 +4,5 @@
     "name": "Evan",
     "niche": "Dnd",
     "paymentRate": 0.4
-  },
-  {
-    "id": 2,
-    "name": "Ali",
-    "niche": "Jump Rope",
-    "paymentRate": 0.6
-  },
-  {
-    "id": 3,
-    "name": "test",
-    "niche": "test",
-    "paymentRate": 0
   }
 ]

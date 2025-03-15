@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:5174/api/clients';
+const API = 'http://localhost:5174/api/clients';
 
 export const fetchClients = async () => {
-  const response = await fetch(API_URL);
+  const response = await fetch(API);
   if (!response.ok) {
     throw new Error('Failed to fetch clients');
   }
@@ -9,7 +9,7 @@ export const fetchClients = async () => {
 };
 
 export const createClient = async (client) => {
-  const response = await fetch(API_URL, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

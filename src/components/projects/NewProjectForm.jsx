@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import { getMetadata } from 'video-metadata-thumbnails';
-import { createProject } from '../../services/api/projectsApi';
+import { createProject } from '../../services/api/projectsAPI';
 
 const NewProjectForm = ({ clients, onAddProject }) => {
   const [newProject, setNewProject] = useState({

@@ -52,7 +52,6 @@ const PaymentCalculatorPage = () => {
     setProjects(updatedProjects.filter(project => project.paymentStatus !== 'paid'));
     setSelectedProjects([]);
 
-    // Update the projects on the server
     selectedProjects.forEach(projectId => {
       const project = projects.find(project => project.id === projectId);
       const updatedProject = { ...project, paymentStatus: 'paid' };
@@ -65,9 +64,6 @@ const PaymentCalculatorPage = () => {
         body: JSON.stringify(updatedProject),
       })
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to update project');
-          }
           return response.json();
         })
         .catch(error => {
@@ -107,7 +103,7 @@ const PaymentCalculatorPage = () => {
               </td>
               <td>{project.title}</td>
               <td>{project.client.name}</td>
-              <td>{project.duration}</td>
+              <td>{project.duration} Seconds</td>
               <td>{project.client.paymentRate}</td>
               <td>{project.paymentStatus}</td>
             </tr>

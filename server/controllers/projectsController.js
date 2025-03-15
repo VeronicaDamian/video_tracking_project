@@ -14,6 +14,23 @@ export const getProjects = (req, res) => {
   });
 };
 
+export const getProjectById = (req, res) => {
+  fs.readFile(projectsFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading projects data:', err);
+      res.status(500).send('Error reading projects data');
+      return;
+    }
+    const projects = JSON.parse(data);
+    const project = projects.find(project => project.id === parseInt(req.params.id));
+    if (!project) {
+      res.status(404).send('Project not found');
+      return;
+    }
+    res.json(project);
+  });
+};
+
 export const createProject = (req, res) => {
   fs.readFile(projectsFilePath, 'utf8', (err, data) => {
     if (err) {
@@ -31,6 +48,31 @@ export const createProject = (req, res) => {
         return;
       }
       res.status(201).json(newProject);
+    });
+  });
+};
+
+export const updateProject = (req, res) => {
+  fs.readFile(projectsFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading projects data:', err);
+      res.status(500).send('Error reading projects data');
+      return;
+    }
+    const projects = JSON.parse(data);
+    const projectIndex = projects.findIndex(project => project.id === parseInt(req.params.id));
+    if (projectIndex === -1) {
+      res.status(404).send('Project not found');
+      return;
+    }
+    projects[projectIndex] = { ...projects[projectIndex], ...req.body };
+    fs.writeFile(projectsFilePath, JSON.stringify(projects, null, 2), (err) => {
+      if (err) {
+        console.error('Error updating project:', err);
+        res.status(500).send('Error updating project');
+        return;
+      }
+      res.json(projects[projectIndex]);
     });
   });
 };

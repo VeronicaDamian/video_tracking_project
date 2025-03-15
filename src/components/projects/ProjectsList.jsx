@@ -28,7 +28,7 @@ const ProjectsList = ({ projects, onDelete }) => {
             <td>{project.title}</td>
             <td>{project.client?.name || 'No Client'}</td>
             <td>{project.status}</td>
-            <td>{project.duration}</td>
+            <td>{project.duration} sec</td>
             <td>{project.paymentStatus}</td>
             <td>{project.tags.join(', ')}</td>
             <td>
