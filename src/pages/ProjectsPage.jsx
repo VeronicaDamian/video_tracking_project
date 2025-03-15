@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import ProjectsList from '../components/ProjectsList';
-import NewProjectForm from '../components/NewProjectForm';
-import UpdateProjectForm from '../components/UpdateProjectForm';
-import NewClientForm from '../components/NewClientForm';
+import ProjectsList from '../components/projects/ProjectsList';
+import NewProjectForm from '../components/projects/NewProjectForm';
+import UpdateProjectForm from '../components/projects//UpdateProjectForm';
+import NewClientForm from '../components/clients/NewClientForm';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
@@ -49,7 +49,7 @@ const ProjectsPage = () => {
         <Link to="/projects/new-client" className="btn btn-primary me-2">Add New Client</Link>
         <Link to="/clients" className="btn btn-primary me-2">Clients</Link>
       </div>
-      
+
       <Routes>
         <Route path="/" element={<ProjectsList projects={projects} clients={clients} onDelete={handleDeleteProject} />} />
         <Route path="new-project" element={<NewProjectForm clients={clients} />} />
