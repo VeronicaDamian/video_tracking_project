@@ -1,18 +1,1 @@
-[
-  {
-    "id": 1,
-    "title": "Barbarian",
-    "client": {
-      "id": 1,
-      "name": "Evan",
-      "niche": "Dnd",
-      "paymentRate": 0.4
-    },
-    "status": "Not Started",
-    "duration": "44",
-    "paymentStatus": "unpaid",
-    "tags": [
-      ""
-    ]
-  }
-]
+[]
