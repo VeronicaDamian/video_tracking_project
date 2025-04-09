@@ -7,7 +7,7 @@ import {
   getProductivityData,
 } from "../controllers/performanceController.js";
 
-const router = express.Router;
+const router = express.Router();
 
 router.get("/", getPerfomanceData);
 router.get("/time-range", getPerformanceByTimeRange);
