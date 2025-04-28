@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import TimeRangeFilter from '../components/Performance/TimeRangeFilter';
-import KPISummary from '../components/Performance/KPISummary';
-import DetailedMetrics from '../components/Performance/DetailedMetrics';
-import PerformanceCharts from '../components/Performance/PerformanceCharts';
+import TimeRangeFilter from '../components/performance/TimeRangeFilter';
+import KPISummary from '../components/performance/KPISummary';
+import DetailedMetrics from '../components/performance/DetailedMetrics';
+import PerformanceCharts from '../components/performance/PerformanceCharts';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ErrorAlert from '../components/common/ErrorAlert';
 

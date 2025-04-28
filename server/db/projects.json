@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "timetravel",
+    "client": {
+      "id": 1,
+      "name": "Evan",
+      "niche": "Dnd",
+      "paymentRate": 0.4,
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "createdAt": "2025-04-28T08:15:21.829Z"
+    },
+    "status": "Done",
+    "duration": 62,
+    "paymentStatus": "unpaid",
+    "tags": [],
+    "createdAt": "2025-04-28T08:16:27.170Z"
+  }
+]

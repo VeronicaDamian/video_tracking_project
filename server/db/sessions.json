@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": 1,
+    "sessionStart": "2025-04-28T08:16:41.151Z",
+    "sessionEnd": "2025-04-28T08:16:43.467Z",
+    "notes": "",
+    "activityType": "editing"
+  }
+]

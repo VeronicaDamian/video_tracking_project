@@ -1,0 +1,18 @@
+:root {
+    --bs-primary: #00005b;
+    /* Purple color */
+    --bs-primary-rgb: 0, 0, 91;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #5a35a0;
+    /* Darker purple for hover */
+    border-color: #5a35a0;
+}

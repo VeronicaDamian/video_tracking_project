@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Evan",
+    "niche": "Dnd",
+    "paymentRate": 0.4,
+    "email": "",
+    "phone": "",
+    "notes": "",
+    "createdAt": "2025-04-28T08:15:21.829Z"
+  }
+]

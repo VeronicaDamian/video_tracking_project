@@ -2,7 +2,7 @@ import * as dataService from "../services/dataService.js";
 import * as statsService from "../services/statisticsService.js";
 
 export const getPerfomanceData = async (req, res) => {
-  const { projects, sessions } = await dataService.getAllPerfomanceData();
+  const { projects, sessions } = await dataService.getAllPerformanceData();
   const stats = statsService.calculateStatistics(projects, sessions);
   res.json({ stats, projects, sessions });
 };
@@ -11,7 +11,7 @@ export const getPerformanceByTimeRange = async (req, res) => {
   const { startDate, endDate } = req.query;
   const start = new Date(startDate);
   const end = new Date(endDate);
-  const { projects, sessions } = await dataService.getAllPerfomanceData();
+  const { projects, sessions } = await dataService.getAllPerformanceData();
   const { filteredProjects, filteredSessions } =
     statsService.filterDataByDateRange(projects, sessions, startDate, endDate);
   const stats = statsService.calculateStatistics(

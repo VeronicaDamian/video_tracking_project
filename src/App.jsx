@@ -1,4 +1,4 @@
-import {ProjectContext} from './context/ProjectContext.jsx';
+import {ProjectProvider} from './context/ProjectContext.jsx';
 import Navbar from './components/Navbar.jsx';
 import {Routes, Route} from 'react-router-dom';
 import HomePage from "./pages/HomePage.jsx";
@@ -11,7 +11,7 @@ import ClientsPage from "./pages/ClientsPage.jsx";
 
 function App() {
   return (
-    <ProjectContext>
+    <ProjectProvider>
       <div className='app'>
         <Navbar/>
         <Routes>
@@ -23,7 +23,7 @@ function App() {
           <Route path="/clients/*" element={<ClientsPage />} />
         </Routes>
       </div>
-    </ProjectContext>
+    </ProjectProvider>
   );
 }
 
